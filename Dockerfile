@@ -1,9 +1,9 @@
-FROM ubuntu:focal
+FROM debian:buster
 LABEL MAINTAINER='William Dizon <wdchromium@gmail.com>'
 
 #update and accept all prompts
 ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y ca-certificates-java ca-certificates && apt-get install -y \
   supervisor \
   rdiff-backup \
   screen \
@@ -12,8 +12,7 @@ RUN apt-get update && apt-get install -y \
   curl \
   rlwrap \
   unzip \
-  openjdk-21-jre-headless \
-  openjdk-8-jre-headless \
+  default-jre-headless \
   ca-certificates-java \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
